@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Picker</title>
+</head>
+<body>
+    <h1>Welcome to the Movie Picker</h1>
+    <form action="/recommend" method="post">
+        <input type="text" name="query" placeholder="Get any movie details of your choice">
+        <button type="submit">Search</button>
+        <button type="submit" name="random_movie" value="true">Shall I pick one for you?</button>
+    </form>
+
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+
+    {% if movie %}
+        <h2>{{ movie['title'] }}</h2>
+        <p><strong>Overview:</strong> {{ movie['overview'] }}</p>
+        <p><strong>Release Date:</strong> {{ movie['release_date'] }}</p>
+        <p><strong>Rating:</strong> {{ movie['vote_average'] }}</p>
+    {% endif %}
+</body>
+</html>
